@@ -7,16 +7,16 @@ interface Env {
 	ISS: string;
 	NODE_ENV: string;
 	PORT: string;
-	STAGE: string;
-	STUDIO_API_BASE: string;
+	MATRIX_DOMAIN: string;
+	MATRIX_API_BASE: string;
 }
 
 const required: Array<keyof Env> = [
 	"ISS",
 	"NODE_ENV",
 	"PORT",
-	"STAGE",
-	"STUDIO_API_BASE"
+	"MATRIX_DOMAIN",
+	"MATRIX_API_BASE"
 ];
 
 const defaults: { [key in keyof NodeJS.ProcessEnv]?: string } = {

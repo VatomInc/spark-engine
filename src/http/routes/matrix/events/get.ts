@@ -1,0 +1,30 @@
+import { http, services, utils } from "@varius.io/framework";
+import axios from "axios";
+
+const { MATRIX_API_BASE } = process.env;
+
+// TODO: move to DB?
+const APP_SERVICE_TOKEN = '30c05ae90a248a4188e620216fa72e349803310ec83e2a77b34fe90be6081f46';
+
+const ax = axios.create({
+    baseURL: MATRIX_API_BASE,
+    headers: {
+      Authorization: `Bearer ${APP_SERVICE_TOKEN}`
+    }
+});
+
+
+export default async function (lambdaEvent: http.lambda.LambdaEvent) {
+
+    const { roomId, eventId } = lambdaEvent.pathParameters;
+    
+    //TODO: Determine businessId for room and check that token scope includes businessId
+    
+    utils.logger.info("Matrix getEvent:", roomId, eventId);
+    
+    const { data } = await ax.get(`/_matrix/client/v3/rooms/${roomId}/event/${eventId}`, {
+        validateStatus: null
+    });
+
+    return http.responses.ok(data);
+}

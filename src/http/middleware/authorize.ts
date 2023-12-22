@@ -16,7 +16,7 @@ import { strict as assert } from "assert";
 import axios from "axios";
 import { Request, Response, NextFunction } from "express";
 import * as jose from "jose";
-import * as NodeCache from "node-cache";
+import NodeCache from "node-cache";
 
 const { ISS, STUDIO_API_BASE: studioBase } = process.env;
 assert(ISS, "missing ISS env var");
@@ -70,8 +70,8 @@ async function checkAuth(method: string, path: string, tok: string) {
 	for (const iss of ISS.split(",")) {
 		const k = await memo(keysCache, iss, async () => {
 			try {
-				const { data } = await axios.get(`${iss}/.well-known/openid-configuration`);
-				return (await axios.get(data.jwks_uri)).data.keys;
+				const { data } = await axios.get<any>(`${iss}/.well-known/openid-configuration`);
+				return (await axios.get<any>(data.jwks_uri)).data.keys;
 			} catch (e) {
 				console.error("error: could not get oidc config for issuer: %s - %s", iss, e);
 				return [];

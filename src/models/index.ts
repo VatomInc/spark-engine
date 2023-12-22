@@ -1,3 +1,5 @@
-import * as Users from "./users";
+import * as Communities from "./communities";
 
-export { Users };
+export {
+	Communities,
+};
