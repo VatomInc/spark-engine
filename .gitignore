@@ -1,0 +1,21 @@
+node_modules/
+package-lock.json
+# yarn.lock
+# build directories
+.serverless/
+.build/
+.webpack/
+.idea/
+_warmup/
+kube/*secrets*
+env*.sh
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env*
+!.env.template
+
+build/

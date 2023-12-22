@@ -1,0 +1,41 @@
+{
+	"name": "@vatominc/spark-engine",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"start": "node -r module-alias/register build/index.js",
+		"start:watch": "nodemon -r module-alias/register build/index.js",
+		"build": "npx tsc",
+		"build:watch": "npx tsc -w",
+		"typecheck": "tsc --noEmit",
+		"format": "prettier --write \"{src,scripts,migrations}/**/*.{js,ts}\"",
+		"lint": "eslint \"{src,scripts,migrations}/**/*.{js,jsx,ts,tsx}\"",
+		"tslint-check": "tslint-config-prettier-check ./tslint.json",
+		"test": "jest",
+		"mig": "node scripts/mig.mjs",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"@varius.io/framework": "^12.3.3",
+		"dotenv": "^8.2.0",
+		"jose": "2.0.2",
+		"module-alias": "^2.2.2",
+		"umzug": "3.0.0-beta.10"
+	},
+	"devDependencies": {
+		"@types/dotenv": "^8.2.0",
+		"@types/express": "^4.17.2",
+		"@typescript-eslint/eslint-plugin": "^4.29.0",
+		"@typescript-eslint/parser": "^4.29.0",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^8.3.0",
+		"husky": "^7.0.1",
+		"lint-staged": "^11.1.1",
+		"nodemon": "^2.0.4",
+		"prettier": "^2.1.2",
+		"typescript": "^4.3.5"
+	},
+	"_moduleAliases": {
+		"#src": "build"
+	}
+}
