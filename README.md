@@ -43,5 +43,18 @@ yarn start:watch
 
 ## Documentation
 
+### Registering a Plugin
 
+When a plugin is deployed, the Vatom platform needs to know the URL of the plugin endpoint and needs a way to secure the communication. Each plugin must be added to the spark_plugin table as follows:
+
+* id - a unique primary key (e.g. nanoid)
+* name - a friendly name for the plugin
+* description - an optional description for the plugin
+* comm_url - the public URL for the plugin
+* comm_secret - a secret that will be used to sign the messages
+
+Once this is done, the plugin should be associated to your Vatom business:
+
+* business_id - the id of your Vatom business
+*	plugin_id - the id of the plugin in the spark_plugin table
 
