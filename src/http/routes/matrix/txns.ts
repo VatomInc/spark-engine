@@ -57,7 +57,7 @@ export async function sendEventToKinesis(accessToken: string, businessId: string
         // Send kinesis analytics event
         if (kinesisEvent.event) {
             utils.logger.info("Sending event to kinesis:", JSON.stringify(kinesisEvent));
-            await utils.analytics.putKinesisEvent(kinesisEvent);
+            await utils.analytics.putAnalyticsEvent("spaces",kinesisEvent.event,kinesisEvent);
         }
 
     } catch (err) {
