@@ -15,7 +15,7 @@
 		"mig": "node scripts/mig.mjs"
 	},
 	"dependencies": {
-		"@varius.io/framework": "^13.6.41",
+		"@varius.io/framework": "^13.14.2",
 		"axios": "^0.22.0",
     	"cors": "^2.8.5",
     	"dotenv": "^16.0.3",
